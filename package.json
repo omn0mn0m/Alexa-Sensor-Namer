@@ -1,7 +1,7 @@
 {
-  "name": "sensor-namer-skill",
+  "name": "sensor-namer-skill-i18n",
   "version": "1.0.0",
-  "description": "Gives you a sensor name based on what you are measuring",
+  "description": "Gives you a sensor name based on what you are measuring i18n version",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,15 +14,15 @@
     "Alexa",
     "skill",
     "sensor",
-	"namer"
+    "namer"
   ],
   "author": "Nam Tran",
   "license": "MIT License",
   "bugs": {
     "url": "https://github.com/omn0mn0m/Sensor-Namer/issues"
   },
-  "homepage": "https://github.com/omn0mn0m/Sensor-Namerreadme",
+  "homepage": "https://github.com/omn0mn0m/Sensor-Namer#readme",
   "dependencies": {
-    "alexa-sdk": "^1.0.6"
+    "alexa-sdk": "^1.0.11"
   }
 }
