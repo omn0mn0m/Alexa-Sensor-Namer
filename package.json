@@ -1,26 +1,27 @@
 {
-  "name": "skill-sample-nodejs-howto-i18n",
+  "name": "sensor-namer-skill",
   "version": "1.0.0",
-  "description": "How-to skill sample i18n version",
+  "description": "Gives you a sensor name based on what you are measuring",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexa/skill-sample-nodejs-howto.git"
+    "url": "git+https://github.com/omn0mn0m/Sensor-Namer.git"
   },
   "keywords": [
     "Alexa",
     "skill",
-    "howto"
+    "sensor",
+	"namer"
   ],
-  "author": "Amazon.com",
-  "license": "Apache-2.0",
+  "author": "Nam Tran",
+  "license": "MIT License",
   "bugs": {
-    "url": "https://github.com/alexa/skill-sample-nodejs-howto/issues"
+    "url": "https://github.com/omn0mn0m/Sensor-Namer/issues"
   },
-  "homepage": "https://github.com/alexa/skill-sample-nodejs-howto#readme",
+  "homepage": "https://github.com/omn0mn0m/Sensor-Namerreadme",
   "dependencies": {
     "alexa-sdk": "^1.0.6"
   }
