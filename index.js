@@ -93,16 +93,16 @@ var languageStrings = {
         "translation": {
             "MEASUREMENTS": measurements.MEASUREMENT_EN_US,
             "SKILL_NAME": "Sensor Helper",
-            "WELCOME_MESSAGE": "Welcome to %s. You can ask a question like, how do I measure wind speed? ... Now, what can I help you with.",
+            "WELCOME_MESSAGE": "Welcome to %s. You can ask a question like, how do i measure wind speed? ... Now, what can I help you with.",
             "WELCOME_REPROMPT": "For instructions on what you can say, please say help me.",
-            "DISPLAY_CARD_TITLE": "%s  - Measurement for %s.",
-            "HELP_MESSAGE": "You can ask questions such as, what\'s the measurement, or, you can say exit...Now, what can I help you with?",
-            "HELP_REPROMPT": "You can say things like, what\'s the measurement, or you can say exit...Now, what can I help you with?",
+            "DISPLAY_CARD_TITLE": "%s  - Sensor for %s.",
+            "HELP_MESSAGE": "You can ask questions such as, how do i measure, or, you can say exit...Now, what can I help you with?",
+            "HELP_REPROMPT": "You can say things like, how do i measure, or you can say exit...Now, what can I help you with?",
             "STOP_MESSAGE": "Goodbye!",
             "MEASUREMENT_REPEAT_MESSAGE": "Try saying repeat.",
             "MEASUREMENT_NOT_FOUND_MESSAGE": "I\'m sorry, I currently do not know ",
-            "MEASUREMENT_NOT_FOUND_WITH_ITEM_NAME": "the measurement for %s. ",
-            "MEASUREMENT_NOT_FOUND_WITHOUT_ITEM_NAME": "that measurement. ",
+            "MEASUREMENT_NOT_FOUND_WITH_MEASUREMENT_NAME": "the sensor for %s. ",
+            "MEASUREMENT_NOT_FOUND_WITHOUT_MEASUREMENT_NAME": "that measurement. ",
             "MEASUREMENT_NOT_FOUND_REPROMPT": "What else can I help with?"
         }
     },

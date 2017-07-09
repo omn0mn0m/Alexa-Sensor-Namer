@@ -13,7 +13,7 @@ module.exports = {
 		"viscosity": "viscometer",
 		"fire": "flame detector",
 		"gravitational force": "gravimeter",
-		"r p m": "tachometer",
+		"rotations per minute": "tachometer",
 		"tilt": "tilt sensor",
 		"rotation": "potentiometer or rotary encoder",
 		"impact": "shock detector",
