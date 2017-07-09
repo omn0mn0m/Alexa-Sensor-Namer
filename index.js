@@ -93,7 +93,7 @@ var languageStrings = {
         "translation": {
             "MEASUREMENTS": measurements.MEASUREMENT_EN_US,
             "SKILL_NAME": "Sensor Helper",
-            "WELCOME_MESSAGE": "Welcome to %s. You can ask a question like, what\'s the measurement for a chest? ... Now, what can I help you with.",
+            "WELCOME_MESSAGE": "Welcome to %s. You can ask a question like, how do I measure wind speed? ... Now, what can I help you with.",
             "WELCOME_REPROMPT": "For instructions on what you can say, please say help me.",
             "DISPLAY_CARD_TITLE": "%s  - Measurement for %s.",
             "HELP_MESSAGE": "You can ask questions such as, what\'s the measurement, or, you can say exit...Now, what can I help you with?",
