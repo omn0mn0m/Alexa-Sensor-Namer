@@ -1,20 +1,23 @@
 'use strict';
 
 var Alexa = require('alexa-sdk');
-var APP_ID = "amzn1.ask.skill.d3498b41-4001-48af-b04b-bb8cf3b38b26";
+var AWS = require('aws-sdk');
 var measurements = require('./measurements');
 
-var requestId;
-
 exports.handler = function(event, context, callback) {
-    var alexa = Alexa.handler(event, context);
-    alexa.APP_ID = APP_ID;
-	requestId = alexa.APP_ID;
+	var APP_ID = process.env.APP_ID;
 	
-    // To enable string internationalization (i18n) features, set a resources object.
-    alexa.resources = languageStrings;
-    alexa.registerHandlers(handlers);
-    alexa.execute();
+	if (event.session.application.applicationId == APP_ID) {
+		var alexa = Alexa.handler(event, context);
+		alexa.appId = APP_ID;
+		
+		// To enable string internationalization (i18n) features, set a resources object.
+		alexa.resources = languageStrings;
+		alexa.registerHandlers(handlers);
+		alexa.execute();
+	} else {
+		console.log("HTTP Error: 400 Bad Request. Check for valid app ID.");
+	}
 };
 
 var handlers = {
@@ -28,43 +31,37 @@ var handlers = {
         this.emit(':ask', this.attributes['speechOutput'], this.attributes['repromptSpeech'])
     },
     'MeasurementIntent': function () {
-		if (this.event.session.application.applicationId == requestId) {
-			var measurementSlot = this.event.request.intent.slots.Measurement;
-			var measurementName;
-			
-			if (measurementSlot && measurementSlot.value) {
-				measurementName = measurementSlot.value.toLowerCase();
-			}
-
-			var cardTitle = this.t("DISPLAY_CARD_TITLE", this.t("SKILL_NAME"), measurementName);
-			var measurements = this.t("MEASUREMENTS");
-			var measurement = measurements[measurementName];
+		var measurementSlot = this.event.request.intent.slots.Measurement;
+		var measurementName;
 		
-			if (measurement) {
-				var output = "you should use a " + measurement;
-				
-				this.attributes['speechOutput'] = output;
-				this.attributes['repromptSpeech'] = this.t("MEASUREMENT_REPEAT_MESSAGE");
-				this.emit(':tellWithCard', output, this.attributes['repromptSpeech'], cardTitle, output);
-			} else {
-				var speechOutput = this.t("MEASUREMENT_NOT_FOUND_MESSAGE");
-				var repromptSpeech = this.t("MEASUREMENT_NOT_FOUND_REPROMPT");
-				if (measurementName) {
-					speechOutput += this.t("MEASUREMENT_NOT_FOUND_WITH_MEASUREMENT_NAME", measurementName);
-				} else {
-					speechOutput += this.t("MEASUREMENT_NOT_FOUND_WITHOUT_MEASUREMENT_NAME");
-				}
-				speechOutput += repromptSpeech;
+		if (measurementSlot && measurementSlot.value) {
+			measurementName = measurementSlot.value.toLowerCase();
+		}
 
-				this.attributes['speechOutput'] = speechOutput;
-				this.attributes['repromptSpeech'] = repromptSpeech;
-
-				this.emit(':ask', speechOutput, repromptSpeech);
-			}
+		var cardTitle = this.t("DISPLAY_CARD_TITLE", this.t("SKILL_NAME"), measurementName);
+		var measurements = this.t("MEASUREMENTS");
+		var measurement = measurements[measurementName];
+	
+		if (measurement) {
+			var output = "you should use a " + measurement;
+			
+			this.attributes['speechOutput'] = output;
+			this.attributes['repromptSpeech'] = this.t("MEASUREMENT_REPEAT_MESSAGE");
+			this.emit(':tellWithCard', output, this.attributes['repromptSpeech'], cardTitle, output);
 		} else {
-			this.attributes['speechOutput'] = this.t("HTTP_ERROR");
-			this.attributes['repromptSpeech'] = this.t("HTTP_ERROR_REPROMPT");
-			this.emit(':tell', this.attributes['speechOutput'], this.attributes['repromptSpeech']);
+			var speechOutput = this.t("MEASUREMENT_NOT_FOUND_MESSAGE");
+			var repromptSpeech = this.t("MEASUREMENT_NOT_FOUND_REPROMPT");
+			if (measurementName) {
+				speechOutput += this.t("MEASUREMENT_NOT_FOUND_WITH_MEASUREMENT_NAME", measurementName);
+			} else {
+				speechOutput += this.t("MEASUREMENT_NOT_FOUND_WITHOUT_MEASUREMENT_NAME");
+			}
+			speechOutput += repromptSpeech;
+
+			this.attributes['speechOutput'] = speechOutput;
+			this.attributes['repromptSpeech'] = repromptSpeech;
+
+			this.emit(':ask', speechOutput, repromptSpeech);
 		}
     },
     'AMAZON.HelpIntent': function () {
@@ -102,8 +99,6 @@ var languageStrings = {
             "HELP_MESSAGE": "You can ask questions such as, what\'s the measurement, or, you can say exit...Now, what can I help you with?",
             "HELP_REPROMPT": "You can say things like, what\'s the measurement, or you can say exit...Now, what can I help you with?",
             "STOP_MESSAGE": "Goodbye!",
-			"HTTP_ERROR": "HTTP Error: 400 Bad Request",
-			"HTTP_ERROR_REPROMPT": "Please check that your app is valid",
             "MEASUREMENT_REPEAT_MESSAGE": "Try saying repeat.",
             "MEASUREMENT_NOT_FOUND_MESSAGE": "I\'m sorry, I currently do not know ",
             "MEASUREMENT_NOT_FOUND_WITH_ITEM_NAME": "the measurement for %s. ",
