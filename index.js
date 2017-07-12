@@ -43,11 +43,11 @@ var handlers = {
 		var measurement = measurements[measurementName];
 	
 		if (measurement) {
-			var output = "you should use a " + measurement;
+			var output = "You should use a " + measurement + ".";
 			
 			this.attributes['speechOutput'] = output;
 			this.attributes['repromptSpeech'] = this.t("MEASUREMENT_REPEAT_MESSAGE");
-			this.emit(':tellWithCard', output, this.attributes['repromptSpeech'], cardTitle, output);
+			this.emit(':tellWithCard', output, cardTitle, output);
 		} else {
 			var speechOutput = this.t("MEASUREMENT_NOT_FOUND_MESSAGE");
 			var repromptSpeech = this.t("MEASUREMENT_NOT_FOUND_REPROMPT");
@@ -92,12 +92,12 @@ var languageStrings = {
     "en": {
         "translation": {
             "MEASUREMENTS": measurements.MEASUREMENT_EN_US,
-            "SKILL_NAME": "Sensor Helper",
-            "WELCOME_MESSAGE": "Welcome to %s. You can ask a question like, how do i measure wind speed? ... Now, what can I help you with.",
+            "SKILL_NAME": "Sensor Namer",
+            "WELCOME_MESSAGE": "Welcome to %s. You can ask a question like, how do I measure wind speed? ... Now, what can I help you with.",
             "WELCOME_REPROMPT": "For instructions on what you can say, please say help me.",
             "DISPLAY_CARD_TITLE": "%s  - Sensor for %s.",
-            "HELP_MESSAGE": "You can ask questions such as, how do i measure, or, you can say exit...Now, what can I help you with?",
-            "HELP_REPROMPT": "You can say things like, how do i measure, or you can say exit...Now, what can I help you with?",
+            "HELP_MESSAGE": "You can ask questions such as, how do I measure, or, you can say exit...Now, what can I help you with?",
+            "HELP_REPROMPT": "You can say things like, how do I measure, or you can say exit...Now, what can I help you with?",
             "STOP_MESSAGE": "Goodbye!",
             "MEASUREMENT_REPEAT_MESSAGE": "Try saying repeat.",
             "MEASUREMENT_NOT_FOUND_MESSAGE": "I\'m sorry, I currently do not know ",
@@ -109,13 +109,13 @@ var languageStrings = {
     "en-US": {
         "translation": {
             "MEASUREMENTS" : measurements.MEASUREMENT_EN_US,
-            "SKILL_NAME" : "Sensor Namer (US)"
+            "SKILL_NAME" : "Sensor Namer"
         }
     },
     "en-GB": {
         "translation": {
             "MEASUREMENTS": measurements.MEASUREMENT_EN_US,
-            "SKILL_NAME": "Sensor Namer (GB)"
+            "SKILL_NAME": "Sensor Namer"
         }
     }
 };
